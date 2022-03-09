@@ -56,7 +56,9 @@ public class HomeController {
 
 	//Handler for registering user
 	@PostMapping(value = "/do_register")
-	public String registerUser(@Valid @ModelAttribute User user, BindingResult result1, @RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model,  HttpSession session) {
+	public String registerUser(@Valid @ModelAttribute User user, BindingResult result1, 
+			@RequestParam(value = "agreement", defaultValue = "false") boolean agreement, 
+			Model model,  HttpSession session) {
 		
 		try {
 			if(!agreement) {

@@ -12,7 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 
@@ -24,16 +26,24 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@NotBlank(message = "Name field is required !!")
-	@Size(min = 2, max = 20,message = "Minimum two and maximum 20 characters are allowed !!")
+	@Size(min = 2, max = 30,message = "Minimum two and maximum 30 characters are allowed !!")
 	private String name;
 	
 	@Column(unique = true)
+	@Email(regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
+        + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")
 	private String email;
+	
+	@NotBlank(message = "Password field is required !!")
+	@Size(min = 8, max = 20,message = "Minimum 8 and maximum 20 characters are allowed !!")
 	private String password;
 	private String role;
 	private boolean enabled;
 	private String imageUrl;
 	@Column(length = 500)
+	
+	@NotBlank(message = "Type something about yourself !!")
+	@Size(min = 20, max = 500,message = "Minimum 20 and maximum 500 characters are allowed !!")
 	private String about;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
