@@ -18,8 +18,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 		//fetching user from database
 		User user = userRepository.getUserByUserName(username);
+		System.out.println(username);
+		
+		System.out.println(user.getEmail());
+		System.out.println(user.getPassword());
 		if(user==null) {
+			System.out.println("111111111111");
 			throw new UsernameNotFoundException("Could Not Found User!!");
+			
 		}
 		
 		CustomUserDetails customUserDetails=new CustomUserDetails(user);
