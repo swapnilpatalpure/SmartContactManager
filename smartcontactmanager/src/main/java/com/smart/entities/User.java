@@ -35,7 +35,7 @@ public class User {
 	private String email;
 	
 	@NotBlank(message = "Password field is required !!")
-	@Size(min = 8, max = 20,message = "Minimum 8 and maximum 20 characters are allowed !!")
+	@Size(min = 3, message = "Minimum 3 characters are allowed !!")
 	private String password;
 	private String role;
 	private boolean enabled;

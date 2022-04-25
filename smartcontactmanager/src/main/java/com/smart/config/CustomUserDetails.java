@@ -13,17 +13,14 @@ public class CustomUserDetails implements UserDetails {
 	
 	
 	private User user;
-	
-	
-
-	public CustomUserDetails() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public CustomUserDetails(User user) {
 		super();
+		System.out.println(user.getEmail() +" : "+user.getPassword());
+		
 		this.user = user;
+		
+
 	}
 
 	@Override
@@ -36,31 +33,40 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public String getPassword() {
+		System.out.println("aaaaaaa   "+user.getPassword());
+		
 		return user.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
+		System.out.println("bbbbbb   "+user.getEmail());
+		
 		return user.getEmail();
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
+		System.out.println("1");
+		
 		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
+		System.out.println("2");
 		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
+		System.out.println("3");
 		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
+		System.out.println("4");
 		return true;
 	}
 
